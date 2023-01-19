@@ -21,8 +21,6 @@
 
 ### Frameworks
 
-
-
 ---
 
 ### Banco de Dados
