@@ -30,7 +30,7 @@
 
 ### Ferramentas
 
-[![VisualStudioCode](https://img.shields.io/badge/Visual_Studio_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)[![Oracle SQL Developer](https://img.shields.io/badge/-Oracle%20SQL%20Developer-orange)](https://www.oracle.com/database/sqldeveloper/)
+[![VisualStudioCode](https://img.shields.io/badge/Visual_Studio_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)](https://code.visualstudio.com/)[(https://img.shields.io/badge/-Oracle%20SQL%20Developer-orange)](https://www.oracle.com/database/sqldeveloper/)
   
 
 ---
