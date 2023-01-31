@@ -7,6 +7,7 @@
 - 😄 Pronouns:  He
 - ⚡ Fun fact:  I love geek culture
 
+<h1 align="center">
 <div>
 <img height="170em" src="https://github-readme-stats.vercel.app/api?username=Reniwtz&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true">    
 <img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Reniwtz&layout=compact&langs_count=6&theme=tokyonight">
@@ -15,10 +16,10 @@
 <br>
 <img style="border: 1px solid white; border-radius: 4px;" height="203px" src="https://github-readme-stats.vercel.app/api?username=Reniwtz&show_icons=true&custom_title=Reniwtz's%20Github%20Stats&theme=tokyonight&hide_border=true">
 <img style="border: 1px solid white; border-radius: 4px;" height="203px" src="https://github-readme-streak-stats.herokuapp.com/?user=Reniwtz&theme=tokyonight&hide_border=true">
+ </details>
+ 
  <br>
  
-    
-  
  ### Linguagens
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org/docs) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
