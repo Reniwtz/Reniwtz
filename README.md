@@ -1,7 +1,7 @@
-## Hello, I´M Renilton Ribeiro, Graduating in Computer Science at UFPB
+## Hello, I´M Renilton Ribeiro, Graduated in Computer Science at UFPB
 
 - 🔭 I’m currently working on hospital Napoleão Laureano
-- 🌱 I’m currently learning CSS, HTML and Javascript
+- 🌱 I’m currently learning CSS, HTML, APEX and PLSQL
 - 💬 Ask me about something
 - 📫 How to reach me:  renilton_jp@hotmail.com or +55 (83) 9 8695-3427
 - 😄 Pronouns:  He
