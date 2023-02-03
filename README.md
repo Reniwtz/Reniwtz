@@ -1,10 +1,10 @@
-## Hello, I´M Renilton Ribeiro, Graduated in Computer Science at UFPB
+## Olá, Eu sou Renilton Ribeiro, Graduado em Ciência da Computação pela a Universidade Federal da Paraiba - UFPB
 
-- 🔭 I’m currently working on hospital Napoleão Laureano
-- 🌱 I’m currently learning CSS, HTML, APEX and PLSQL
-- 💬 Ask me about something
-- 😄 Pronouns:  He
-- ⚡ Fun fact:  I love geek culture
+- 🔭 Eu estou Trabalhando no Hospital Napoleão Laureano.
+- 🌱 No Momento Estou Aprendendo CSS, HTML, APEX and PLSQL
+- 💬 Faça-me Uma Pergunta Sobre Algo
+- 😄 Pronome: Ele
+- ⚡ Fato Divertido: Eu Amo Cultura POP e Nu Metal
 
 <h1 align="center">
 <div>
