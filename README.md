@@ -2,7 +2,7 @@
 
 - 🔭 Estou Trabalhando no Hospital Napoleão Laureano.
 - 🌱 No Momento Estou Aprendendo CSS, HTML, APEX e PLSQL
-- 💬 Faça-me uma Pergunta Sobre Algo
+- 💬 Faça-me uma Pergunta
 - 😄 Pronome: Ele
 - ⚡ Fato Divertido: Eu Amo Cultura POP e Rock
 
