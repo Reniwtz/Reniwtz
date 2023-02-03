@@ -6,6 +6,8 @@
 - 😄 Pronome: Ele
 - ⚡ Fato Divertido: Eu Amo Cultura POP e Nu Metal
 
+---
+
 <h1 align="center">
 <div>
 <img height="170em" src="https://github-readme-stats.vercel.app/api?username=Reniwtz&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true">    
