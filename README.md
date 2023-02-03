@@ -3,7 +3,6 @@
 - 🔭 I’m currently working on hospital Napoleão Laureano
 - 🌱 I’m currently learning CSS, HTML, APEX and PLSQL
 - 💬 Ask me about something
-- 📫 How to reach me:  renilton_jp@hotmail.com or +55 (83) 9 8695-3427
 - 😄 Pronouns:  He
 - ⚡ Fun fact:  I love geek culture
 
