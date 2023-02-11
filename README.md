@@ -3,7 +3,7 @@
 - 🔭 Estou Trabalhando no Hospital Napoleão Laureano.
 - 🌱 No Momento Estou Aprendendo CSS, HTML, APEX e PLSQL
 - 💬 Faça-me uma Pergunta
-- 😄 Pronome: Ele
+- 😄 Pronome: Ele/Dele
 - ⚡ Fato Divertido: Eu Amo Cultura POP e Rock
 
 ---
