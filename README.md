@@ -29,7 +29,7 @@
 
 ### Banco de Dados
 
-[![oraclodata](https://img.shields.io/badge/Oracle_Database-F80000?style=for-the-badge&logo=oracle&logoColor=white)](https://www.oracle.com/br/database/)
+[![oraclodata](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)](https://www.oracle.com/br/database/)
 
 ---
 
