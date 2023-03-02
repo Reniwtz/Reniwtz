@@ -1,10 +1,10 @@
 ## Olá, Eu sou Renilton Ribeiro, Graduado em Ciência da Computação pela a Universidade Federal da Paraiba - UFPB
 
-- 🔭 Estou Trabalhando no Hospital Napoleão Laureano.
+- 🔭 Estou Trabalhando Como Analista de Sistemas no Hospital Napoleão Laureano.
 - 🌱 No Momento Estou Aprendendo Administração de Oracle Database e PL/SQL
+- ⚡ Fato Divertido: Eu Amo Cultura POP e Rock
 - 💬 Faça-me uma Pergunta
 - 😄 Pronome: Ele/Dele
-- ⚡ Fato Divertido: Eu Amo Cultura POP e Rock
 
 ---
 
