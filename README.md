@@ -4,7 +4,6 @@
 - 🌱 No Momento Estou Aprendendo Administração de Oracle Database e PL/SQL
 - ⚡ Fato Divertido: Eu Amo Cultura POP e Rock
 - 💬 Faça-me uma Pergunta
-- 😄 Pronome: Ele/Dele
 
 ---
 <p align="center">
