@@ -7,7 +7,9 @@
 - 😄 Pronome: Ele/Dele
 
 ---
-
+<p align="center">
+  <a href="https://github.com/vn7n24fzkq/github-profile-summary-cards"><img align="center" src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Reniwtz&theme=tokyonight" alt="Zo-Bro-23's github stats" /></a>
+</p>
 <h1 align="center">
 <div>
 <img height="170em" src="https://github-readme-stats.vercel.app/api?username=Reniwtz&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true">    
