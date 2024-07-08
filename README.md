@@ -1,4 +1,4 @@
-![]([[https://user-images.githubusercontent.com/74038190/213760718-ca064723-1c29-4b82-985c-aadc7f57c090.gif])
+![](https://i.giphy.com/nQDKSeRlIyfmw.webp)
 
 
 ## Olá, Eu sou Renilton Ribeiro, Graduado em Ciência da Computação pela a Universidade Federal da Paraiba - UFPB
