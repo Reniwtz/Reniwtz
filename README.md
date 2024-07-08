@@ -1,4 +1,4 @@
-![](https://i.giphy.com/Vh1KrUr6Tvl1RFYYk6.webp)
+![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTBkMW1rb3JldmJlaWM3N3N3em01enY4NWh3eTN5cDdqNjFhZmR6bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/POFvZTtEaAZCIe5CwY/giphy.webp)
 
 
 ## Olá, Eu sou Renilton Ribeiro, Graduado em Ciência da Computação pela a Universidade Federal da Paraiba - UFPB
