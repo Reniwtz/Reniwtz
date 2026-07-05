@@ -5,7 +5,6 @@
 🎓 Graduado em Ciência da Computação pela Universidade Federal da Paraíba (UFPB)
 
 - 🔭 Analista de Sistemas no Hospital Napoleão Laureano
-- 🌱 Atualmente estudando Oracle Database, PostgreSQL e PL/SQL
 - 💻 Apaixonado por Desenvolvimento Web, DevOps, Linux e Infraestrutura
 - ⚡ Fã de Cultura POP e Rock
 - 💬 Pergunte-me qualquer coisa
