@@ -13,18 +13,18 @@
 
 <p align="center">
 <a href="https://github.com/vn7n24fzkq/github-profile-summary-cards">
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Reniwtz&theme=tokyonight"/>
+<img src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/main/assets/profile-details.svg"/>
 </a>
 </p>
 
 <p align="center">
-<img height="170em" src="https://github-readme-stats.vercel.app/api?username=Reniwtz&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
+<img height="170em" src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/main/assets/stats.svg"/>
 
-<img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Reniwtz&layout=compact&langs_count=8&theme=tokyonight"/>
+<img height="170em" src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/main/assets/top-langs.svg"/>
 </p>
 
 <p align="center">
-<img height="203px" src="https://github-readme-streak-stats.herokuapp.com/?user=Reniwtz&theme=tokyonight&hide_border=true"/>
+<img height="203px" src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/main/assets/streak.svg"/>
 </p>
 
 ---
@@ -90,10 +90,10 @@
 ---
 
 <picture>
-<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Reniwtz/Reniwtz/output/github-contribution-grid-snake-dark.svg">
+<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Reniwtz/Reniwtz/output/snake-dark.svg">
 
-<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Reniwtz/Reniwtz/output/github-contribution-grid-snake.svg">
+<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Reniwtz/Reniwtz/output/snake.svg">
 
-<img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/output/github-contribution-grid-snake.svg">
+<img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/output/snake.svg">
 
 </picture>
