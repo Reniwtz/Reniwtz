@@ -5,6 +5,11 @@ on:
     # a cada 6 horas
     - cron: "0 */6 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    # nao re-disparar quando o proprio workflow commitar os SVGs (evita loop)
+    paths-ignore:
+      - "assets/**"
 
 permissions:
   contents: write
@@ -15,34 +20,41 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Baixar cards como SVG
+      # Gera profile, stats e linguagens localmente, lendo a API do GitHub.
+      # Nao depende de nenhum servico externo de renderizacao (nunca cai).
+      - name: Gerar cards
+        uses: vn7n24fzkq/github-profile-summary-cards@release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: Reniwtz
+          AUTO_PUSH: false
+
+      - name: Copiar cards (tema tokyonight) para assets/
         run: |
           mkdir -p assets
+          origem="profile-summary-card-output/tokyonight"
+          echo "Conteudo gerado:"; ls -1 "$origem" || true
+          cp "$origem/0-profile-details.svg"    assets/profile-details.svg
+          cp "$origem/3-stats.svg"              assets/stats.svg
+          cp "$origem/1-repos-per-language.svg" assets/top-langs.svg
+          echo "Copiado para assets/:"; ls -1 assets/
 
-          # Baixa um card, tentando varias vezes, e so aceita SVG valido
-          # (ignora paginas de erro que o servico as vezes devolve com HTTP 200)
-          baixar() {
-            url="$1"; destino="$2"
-            for tentativa in 1 2 3 4 5 6 7 8; do
-              if curl -sSL --fail --retry 5 --retry-delay 10 --retry-all-errors \
-                   --max-time 120 "$url" -o "$destino.tmp" \
-                 && grep -qi "<svg" "$destino.tmp" \
-                 && ! grep -qiE "something went wrong|maximum retries|invalid username|could ?n.t fetch|rate limit" "$destino.tmp"; then
-                mv "$destino.tmp" "$destino"
-                echo "OK: $destino (tentativa $tentativa)"
-                return 0
-              fi
-              echo "Tentativa $tentativa falhou para $destino, esperando..."
-              rm -f "$destino.tmp"
-              sleep 20
-            done
-            echo "Falhou apos varias tentativas (mantendo versao anterior, se houver): $destino"
-          }
-
-          baixar "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Reniwtz&theme=tokyonight" "assets/profile-details.svg"
-          baixar "https://github-readme-stats.vercel.app/api?username=Reniwtz&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" "assets/stats.svg"
-          baixar "https://github-readme-stats.vercel.app/api/top-langs/?username=Reniwtz&layout=compact&langs_count=8&theme=tokyonight" "assets/top-langs.svg"
-          baixar "https://github-readme-streak-stats.herokuapp.com/?user=Reniwtz&theme=tokyonight&hide_border=true" "assets/streak.svg"
+      # O streak continua vindo do servico do Heroku (funciona), com retentativas.
+      - name: Baixar streak
+        run: |
+          mkdir -p assets
+          url="https://github-readme-streak-stats.herokuapp.com/?user=Reniwtz&theme=tokyonight&hide_border=true"
+          for t in 1 2 3 4 5; do
+            if curl -sSL --fail --retry 5 --retry-delay 10 --retry-all-errors \
+                 --max-time 120 "$url" -o assets/streak.tmp \
+               && grep -qi "<svg" assets/streak.tmp; then
+              mv assets/streak.tmp assets/streak.svg
+              echo "streak OK (tentativa $t)"; break
+            fi
+            echo "streak tentativa $t falhou, esperando..."
+            rm -f assets/streak.tmp; sleep 15
+          done
 
       - name: Commit dos cards
         uses: stefanzweifel/git-auto-commit-action@v5
