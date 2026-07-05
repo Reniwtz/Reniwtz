@@ -19,16 +19,24 @@ jobs:
         run: |
           mkdir -p assets
 
+          # Baixa um card, tentando varias vezes, e so aceita SVG valido
+          # (ignora paginas de erro que o servico as vezes devolve com HTTP 200)
           baixar() {
             url="$1"; destino="$2"
-            if curl -sSL --fail --max-time 60 "$url" -o "$destino.tmp" \
-               && grep -qi "<svg" "$destino.tmp"; then
-              mv "$destino.tmp" "$destino"
-              echo "OK: $destino"
-            else
+            for tentativa in 1 2 3 4 5 6 7 8; do
+              if curl -sSL --fail --retry 5 --retry-delay 10 --retry-all-errors \
+                   --max-time 120 "$url" -o "$destino.tmp" \
+                 && grep -qi "<svg" "$destino.tmp" \
+                 && ! grep -qiE "something went wrong|maximum retries|invalid username|could ?n.t fetch|rate limit" "$destino.tmp"; then
+                mv "$destino.tmp" "$destino"
+                echo "OK: $destino (tentativa $tentativa)"
+                return 0
+              fi
+              echo "Tentativa $tentativa falhou para $destino, esperando..."
               rm -f "$destino.tmp"
-              echo "Falhou (mantendo versao anterior): $destino"
-            fi
+              sleep 20
+            done
+            echo "Falhou apos varias tentativas (mantendo versao anterior, se houver): $destino"
           }
 
           baixar "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Reniwtz&theme=tokyonight" "assets/profile-details.svg"
