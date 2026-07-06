@@ -43,11 +43,11 @@ jobs:
           cp "$origem/4-productive-time.svg"      assets/productive-time.svg
           echo "Copiado para assets/:"; ls -1 assets/
 
-      # Card de linguagens via metrics: analisa o codigo dos repos INCLUINDO os
-      # privados. Precisa do PAT classico (escopo repo) e da analise in-depth,
-      # que clona os repos e conta as linguagens de verdade (Python, HTML, CSS,
-      # PLSQL, etc.), nao so os publicos.
+      # Card de linguagens via metrics: inclui repos PRIVADOS na contagem
+      # (via API, usando o PAT classico com escopo repo). Sem analise in-depth
+      # para evitar timeout/falha. continue-on-error para nao travar os demais.
       - name: Card de linguagens (inclui privados)
+        continue-on-error: true
         uses: lowlighter/metrics@latest
         with:
           filename: assets/langs.svg
@@ -57,13 +57,10 @@ jobs:
           base: ""
           output_action: none
           plugin_languages: yes
-          plugin_languages_indepth: yes
-          plugin_languages_analysis_timeout: 15
-          plugin_languages_categories: markup, programming
-          plugin_languages_colors: github
           plugin_languages_limit: 8
+          plugin_languages_colors: github
           plugin_languages_sections: most-used
-          plugin_languages_details: bytes-size, percentage
+          plugin_languages_details: percentage
 
       # Streak vem do dominio mantido (demolab). Se o servico falhar (erro de
       # API do GitHub), NAO sobrescrevemos: preservamos o ultimo streak.svg bom.
