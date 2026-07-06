@@ -22,10 +22,13 @@ jobs:
 
       # Gera profile, stats e linguagens localmente, lendo a API do GitHub.
       # Nao depende de nenhum servico externo de renderizacao (nunca cai).
+      # Usa o PAT pessoal (secrets.PAT_TOKEN) para incluir repos PRIVADOS nas
+      # estatisticas de linguagem. Se o secret nao existir, cai no token padrao
+      # (so publicos) para nao quebrar.
       - name: Gerar cards
         uses: vn7n24fzkq/github-profile-summary-cards@release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
         with:
           USERNAME: Reniwtz
           AUTO_PUSH: false
