@@ -39,8 +39,9 @@ jobs:
           origem="profile-summary-card-output/tokyonight"
           echo "Conteudo gerado:"; ls -1 "$origem" || true
           cp "$origem/0-profile-details.svg"      assets/profile-details.svg
-          # Linguagens por COMMITS (reflete o codigo escrito), nao por repo.
-          cp "$origem/2-most-commit-language.svg" assets/top-langs.svg
+          # Linguagens por REPOSITORIO (colorido, mostra variedade). Com o PAT,
+          # ja inclui os repos privados.
+          cp "$origem/1-repos-per-language.svg"   assets/top-langs.svg
           # Horario mais produtivo (substitui o antigo card de Stats).
           cp "$origem/4-productive-time.svg"      assets/productive-time.svg
           echo "Copiado para assets/:"; ls -1 assets/
