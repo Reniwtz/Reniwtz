@@ -40,21 +40,27 @@ jobs:
           cp "$origem/1-repos-per-language.svg" assets/top-langs.svg
           echo "Copiado para assets/:"; ls -1 assets/
 
-      # O streak continua vindo do servico do Heroku (funciona), com retentativas.
+      # Streak vem do dominio mantido (demolab). Se o servico falhar (erro de
+      # API do GitHub), NAO sobrescrevemos: preservamos o ultimo streak.svg bom.
       - name: Baixar streak
         run: |
           mkdir -p assets
-          url="https://github-readme-streak-stats.herokuapp.com/?user=Reniwtz&theme=tokyonight&hide_border=true"
+          url="https://streak-stats.demolab.com/?user=Reniwtz&theme=tokyonight&hide_border=true"
+          ok=false
           for t in 1 2 3 4 5; do
             if curl -sSL --fail --retry 5 --retry-delay 10 --retry-all-errors \
                  --max-time 120 "$url" -o assets/streak.tmp \
-               && grep -qi "<svg" assets/streak.tmp; then
+               && grep -qi "<svg" assets/streak.tmp \
+               && ! grep -qi "Failed to retrieve\|API issue\|error" assets/streak.tmp; then
               mv assets/streak.tmp assets/streak.svg
-              echo "streak OK (tentativa $t)"; break
+              echo "streak OK (tentativa $t)"; ok=true; break
             fi
-            echo "streak tentativa $t falhou, esperando..."
+            echo "streak tentativa $t falhou (resposta invalida ou de erro), esperando..."
             rm -f assets/streak.tmp; sleep 15
           done
+          if [ "$ok" != "true" ]; then
+            echo "Servico de streak indisponivel; mantendo o assets/streak.svg anterior."
+          fi
 
       - name: Commit dos cards
         uses: stefanzweifel/git-auto-commit-action@v5
