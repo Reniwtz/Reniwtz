@@ -39,12 +39,31 @@ jobs:
           origem="profile-summary-card-output/tokyonight"
           echo "Conteudo gerado:"; ls -1 "$origem" || true
           cp "$origem/0-profile-details.svg"      assets/profile-details.svg
-          # Linguagens por REPOSITORIO (colorido, mostra variedade). Com o PAT,
-          # ja inclui os repos privados.
-          cp "$origem/1-repos-per-language.svg"   assets/top-langs.svg
-          # Horario mais produtivo (substitui o antigo card de Stats).
+          # Horario mais produtivo / commits por hora (substitui o antigo Stats).
           cp "$origem/4-productive-time.svg"      assets/productive-time.svg
           echo "Copiado para assets/:"; ls -1 assets/
+
+      # Card de linguagens via metrics: analisa o codigo dos repos INCLUINDO os
+      # privados. Precisa do PAT classico (escopo repo) e da analise in-depth,
+      # que clona os repos e conta as linguagens de verdade (Python, HTML, CSS,
+      # PLSQL, etc.), nao so os publicos.
+      - name: Card de linguagens (inclui privados)
+        uses: lowlighter/metrics@latest
+        with:
+          filename: assets/langs.svg
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
+          user: Reniwtz
+          template: classic
+          base: ""
+          output_action: none
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          plugin_languages_analysis_timeout: 15
+          plugin_languages_categories: markup, programming
+          plugin_languages_colors: github
+          plugin_languages_limit: 8
+          plugin_languages_sections: most-used
+          plugin_languages_details: bytes-size, percentage
 
       # Streak vem do dominio mantido (demolab). Se o servico falhar (erro de
       # API do GitHub), NAO sobrescrevemos: preservamos o ultimo streak.svg bom.
