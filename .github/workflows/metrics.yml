@@ -1,45 +1,28 @@
 name: Metrics
 
 on:
-
   schedule:
-
     - cron: "0 3 * * *"
-
   workflow_dispatch:
 
 permissions:
-
   contents: write
 
 jobs:
-
-  github-metrics:
-
+  # Card de linguagens: usa o PAT (escopo repo) para incluir os repositorios
+  # PRIVADOS na contagem. O proprio metrics gera e commita o SVG (padrao que
+  # ja funciona neste repo).
+  languages:
     runs-on: ubuntu-latest
-
     steps:
-
       - uses: lowlighter/metrics@latest
-
         with:
-
-          filename: assets/metrics.svg
-
-          token: ${{ secrets.GITHUB_TOKEN }}
-
+          filename: assets/langs.svg
+          token: ${{ secrets.PAT_TOKEN }}
           user: Reniwtz
-
           template: classic
-
-          base: header, activity, community, repositories, metadata
-
+          base: ""
           plugin_languages: yes
-
-          plugin_languages_limit: 10
-
-          plugin_isocalendar: yes
-
-          plugin_followup: yes
-
-          plugin_traffic: yes
+          plugin_languages_limit: 8
+          plugin_languages_colors: github
+          committer_message: "Atualizar card de linguagens"
