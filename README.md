@@ -18,8 +18,7 @@
 </p>
 
 <p align="center">
-<img width="49%" src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/main/assets/langs.svg"/>
-<img width="49%" src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/main/assets/productive-time.svg"/>
+<img width="72%" src="https://raw.githubusercontent.com/Reniwtz/Reniwtz/main/assets/langs.svg"/>
 </p>
 
 <p align="center">

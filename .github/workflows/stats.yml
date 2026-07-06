@@ -39,8 +39,6 @@ jobs:
           origem="profile-summary-card-output/tokyonight"
           echo "Conteudo gerado:"; ls -1 "$origem" || true
           cp "$origem/0-profile-details.svg"      assets/profile-details.svg
-          # Horario mais produtivo / commits por hora (substitui o antigo Stats).
-          cp "$origem/4-productive-time.svg"      assets/productive-time.svg
           echo "Copiado para assets/:"; ls -1 assets/
 
       # Streak vem do dominio mantido (demolab). Se o servico falhar (erro de
