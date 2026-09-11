@@ -18,7 +18,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Gera profile, stats e linguagens localmente, lendo a API do GitHub.
       # Nao depende de nenhum servico externo de renderizacao (nunca cai).
@@ -64,7 +64,7 @@ jobs:
           fi
 
       - name: Commit dos cards
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Atualizar cards de estatisticas"
           file_pattern: "assets/*.svg"
