@@ -9,27 +9,87 @@ permissions:
   contents: write
 
 jobs:
-  # Card de linguagens: usa o PAT (escopo repo) para incluir os repositorios
-  # PRIVADOS na contagem. O proprio metrics gera e commita o SVG (padrao que
-  # ja funciona neste repo).
+  # Card de linguagens + "quando programa". Usa o PAT (escopo repo) para incluir
+  # os repositorios PRIVADOS na contagem.
+  #
+  # IMPORTANTE — o "Unexpected error" que aparecia em "Recent coding habits":
+  # e a mensagem generica do metrics quando um plugin estoura. Antes, a propria
+  # action commitava o SVG (output_action padrao), entao o card COM o erro ia
+  # direto pro perfil e ficava la ate o dia seguinte. Agora o SVG e gerado num
+  # arquivo temporario e so substitui o bom se vier limpo — mesmo padrao de
+  # fallback que o stats.yml ja usa no streak.
+  #
+  # Se o erro persistir no log do Actions, a causa quase sempre e o token:
+  # o plugin habits le os EVENTOS recentes e precisa enxergar os repos onde os
+  # commits foram feitos. PAT_TOKEN precisa ser um token CLASSICO com escopo
+  # `repo` (+ `read:org` para repos de organizacao). Um fine-grained token que
+  # nao cubra a organizacao devolve 404 nos eventos e derruba o plugin.
   languages:
     runs-on: ubuntu-latest
     steps:
-      - uses: lowlighter/metrics@latest
+      - uses: actions/checkout@v4
+
+      - name: Gerar card (arquivo temporario)
+        uses: lowlighter/metrics@v3.34
         with:
-          filename: assets/langs.svg
+          filename: assets/langs.new.svg
           token: ${{ secrets.PAT_TOKEN }}
           user: Reniwtz
           template: classic
           base: ""
           # Horario local (Joao Pessoa) para o grafico de "quando programa".
           config_timezone: America/Recife
+
+          # Nao commita nada: quem decide se o card presta e o step seguinte.
+          output_action: none
+
+          # A API do GitHub falha de vez em quando (rate limit / 5xx). Tentar de
+          # novo evita perder o card por um tropeco passageiro.
+          retries: 3
+          retries_delay: 60
+
           # Linguagens (inclui privados), todas.
           plugin_languages: yes
           plugin_languages_limit: 25
           plugin_languages_colors: github
+
           # "Quando voce programa": commits por hora do dia / dia da semana.
           plugin_habits: yes
           plugin_habits_charts: yes
+          # `facts` fica desligado de proposito: e a parte que baixa o DIFF de
+          # cada commit recente (muitas chamadas a mais, e 404 em qualquer repo
+          # que o token nao alcance). Os graficos nao precisam dela.
           plugin_habits_facts: no
-          committer_message: "Atualizar card de linguagens/atividade"
+          # Janela menor = menos eventos analisados = menos superficie de erro.
+          plugin_habits_from: 100
+          plugin_habits_days: 14
+          plugin_habits_trim: yes
+
+      - name: Validar antes de publicar
+        run: |
+          novo="assets/langs.new.svg"
+
+          if [ ! -s "$novo" ]; then
+            echo "::warning::O metrics nao gerou o SVG. Card anterior preservado."
+            rm -f "$novo"
+            exit 0
+          fi
+
+          # O metrics nao falha o job quando um plugin estoura: ele desenha o
+          # erro DENTRO do SVG. Entao a checagem tem que ser no conteudo.
+          if grep -qiE "Unexpected error|Insufficient token scopes|Error while" "$novo"; then
+            echo "::warning::Card gerado com erro de plugin — card anterior preservado."
+            echo "Trecho do erro encontrado no SVG:"
+            sed -e 's/<[^>]*>/\n/g' "$novo" | grep -iE "unexpected error|insufficient|error" | head -5
+            rm -f "$novo"
+            exit 0
+          fi
+
+          mv "$novo" assets/langs.svg
+          echo "Card de linguagens/atividade atualizado."
+
+      - name: Commit do card
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Atualizar card de linguagens/atividade"
+          file_pattern: "assets/langs.svg"
